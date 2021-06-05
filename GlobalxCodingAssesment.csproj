@@ -3,7 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>globalx_coding_assesment</RootNamespace>
+    <RootNamespace>GlobalxCodingAssesment</RootNamespace>
+
   </PropertyGroup>
 
   <ItemGroup>
