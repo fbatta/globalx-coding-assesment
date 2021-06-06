@@ -1,8 +1,8 @@
 namespace GlobalxCodingAssesment
 {
     // interface to sort some generic element
-    interface ISorter<T>
+    public interface ISorter<T>
     {
-        T Sort();
+        public T Sort();
     }
 }

@@ -9,4 +9,12 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FileReader\FileReader.csproj" />
+    <ProjectReference Include="..\FileWriter\FileWriter.csproj" />
+    <ProjectReference Include="..\NamesComparator\NamesComparator.csproj" />
+    <ProjectReference Include="..\NamesSorter\NamesSorter.csproj" />
+    <ProjectReference Include="..\GlobalxCodingAssesmentInterfaces\GlobalxCodingAssesmentInterfaces.csproj" />
+  </ItemGroup>
+
 </Project>
