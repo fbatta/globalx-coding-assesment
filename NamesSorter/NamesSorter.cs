@@ -43,6 +43,12 @@ namespace GlobalxCodingAssesment
             return _sortedList;
         }
 
+        // return the unsorted version of the list, loaded in the class constructor
+        public IEnumerable<string> GetUnsortedList()
+        {
+            return _unsortedList;
+        }
+
         // write sorted list somewhere
         public void Write()
         {
