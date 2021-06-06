@@ -36,9 +36,10 @@ namespace GlobalxCodingAssesment
             services.AddTransient<IReader<IEnumerable<string>>, FileReader>();
             // add a write that will write an IEnumerable<string> to a file
             services.AddTransient<IWriter<IEnumerable<string>>, FileWriter>();
-            // add the NamesSorter class. The two previous dependencies will be automatically injected into this class that depends on both
+            // add the NamesSorter class. The previous dependencies will be automatically injected into this class that depends on all of them
             services.AddTransient<NamesSorter>();
 
+            // expose the service provider created by building the services, so we can use it to get references to the instances created and consume them
             serviceProvider = services.BuildServiceProvider();
         }
     }
