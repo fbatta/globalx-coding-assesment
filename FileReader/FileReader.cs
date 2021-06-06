@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -16,6 +17,13 @@ namespace GlobalxCodingAssesment
             string workingDirectory = Directory.GetCurrentDirectory();
             // combine workingDirectory with the name of the file we want to get
             _filePath = Path.Combine(workingDirectory, "unsorted-names-list.txt");
+            // check if file exists, if not early exit
+            if (!File.Exists(_filePath))
+            {
+                Console.Beep();
+                Console.Error.WriteLine($"Could not find file {_filePath}. Exiting...");
+                Environment.Exit(1);
+            }
         }
         public IEnumerable<string> Read()
         {
