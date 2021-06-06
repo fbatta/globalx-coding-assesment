@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWriter", "FileWriter\Fi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamesComparator", "NamesComparator\NamesComparator.csproj", "{FBD5E029-1F55-4443-952A-7094C1BA4F3F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalxCodingAssesmentInterfaces", "GlobalxCodingAssesmentInterfaces\GlobalxCodingAssesmentInterfaces.csproj", "{B573B111-6A22-4A79-9626-7169815FFA8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,17 @@ Global
 		{FBD5E029-1F55-4443-952A-7094C1BA4F3F}.Release|x64.Build.0 = Release|Any CPU
 		{FBD5E029-1F55-4443-952A-7094C1BA4F3F}.Release|x86.ActiveCfg = Release|Any CPU
 		{FBD5E029-1F55-4443-952A-7094C1BA4F3F}.Release|x86.Build.0 = Release|Any CPU
+		{B573B111-6A22-4A79-9626-7169815FFA8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B573B111-6A22-4A79-9626-7169815FFA8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B573B111-6A22-4A79-9626-7169815FFA8D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B573B111-6A22-4A79-9626-7169815FFA8D}.Debug|x64.Build.0 = Debug|Any CPU
+		{B573B111-6A22-4A79-9626-7169815FFA8D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B573B111-6A22-4A79-9626-7169815FFA8D}.Debug|x86.Build.0 = Debug|Any CPU
+		{B573B111-6A22-4A79-9626-7169815FFA8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B573B111-6A22-4A79-9626-7169815FFA8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B573B111-6A22-4A79-9626-7169815FFA8D}.Release|x64.ActiveCfg = Release|Any CPU
+		{B573B111-6A22-4A79-9626-7169815FFA8D}.Release|x64.Build.0 = Release|Any CPU
+		{B573B111-6A22-4A79-9626-7169815FFA8D}.Release|x86.ActiveCfg = Release|Any CPU
+		{B573B111-6A22-4A79-9626-7169815FFA8D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
