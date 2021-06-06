@@ -4,5 +4,9 @@ namespace GlobalxCodingAssesment
     public interface ISorter<T>
     {
         public T Sort();
+
+        public T GetUnsortedList();
+
+        public void Write();
     }
 }

@@ -1,74 +1,42 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GlobalxCodingAssesment;
 using System.Collections.Generic;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GlobalxCodingAssesmentTests
 {
-    // a class to mock an IReader: returns a predefined list of values when Read() is called, and also has method to return a list of the expected result after sorting
-    public class MockReader : IReader<IEnumerable<string>>
-    {
-        public IEnumerable<string> Read()
-        {
-            return new string[] {
-                "Janet Parsons",
-                "Vaughn Lewis",
-                "Adonis Julius Archer",
-                "Shelby Nathan Yoder",
-                "Marin Alvarez",
-                "London Lindsey",
-                "Beau Tristan Bentley",
-                "Leo Gardner",
-                "Hunter Uriah Mathew Clarke",
-                "Mikayla Lopez",
-                "Frankie Conner Ritter"
-            };
-        }
-
-        public IEnumerable<string> GetExpectedResult()
-        {
-            return new string[] {
-                "Adonis Julius Archer",
-                "Beau Tristan Bentley",
-                "Frankie Conner Ritter",
-                "Hunter Uriah Mathew Clarke",
-                "Janet Parsons",
-                "Leo Gardner",
-                "London Lindsey",
-                "Marin Alvarez",
-                "Mikayla Lopez",
-                "Shelby Nathan Yoder",
-                "Vaughn Lewis",
-            };
-        }
-    }
-
-    // we don't really need to implement this class since 
-    public class MockWriter : IWriter<IEnumerable<string>>
-    {
-        public IEnumerable<string> writtenList;
-        public void Write(IEnumerable<string> thingToWrite)
-        {
-            writtenList = thingToWrite;
-        }
-    }
-
     [TestClass]
     public class NamesSorterTests
     {
-        MockReader _reader;
-        MockWriter _writer;
-        NamesComparator _comparer;
-        NamesSorter _namesSorter;
+        ServiceProvider serviceProvider;
+        IReader<IEnumerable<string>> _reader;
+        IWriter<IEnumerable<string>> _writer;
+        IComparer<string> _comparer;
+        ISorter<IEnumerable<string>> _namesSorter;
         public NamesSorterTests()
         {
-            // create instances of mock classes needed as dependencies
-            _reader = new MockReader();
-            _writer = new MockWriter();
-            // create instance of NamesComparator
-            _comparer = new NamesComparator();
+            ConfigureServices();
+            // get instances of mock classes needed as dependencies
+            _reader = serviceProvider.GetService<IReader<IEnumerable<string>>>();
+            _writer = serviceProvider.GetService<IWriter<IEnumerable<string>>>();
+            // get instance of NamesComparator
+            _comparer = serviceProvider.GetService<IComparer<string>>();
 
-            // create instance of NamesSorter
-            _namesSorter = new NamesSorter(_reader, _writer, _comparer);
+            // get instance of NamesSorter
+            _namesSorter = serviceProvider.GetService<ISorter<IEnumerable<string>>>();
+
+        }
+
+        public void ConfigureServices()
+        {
+            ServiceCollection services = new ServiceCollection();
+
+            services.AddTransient<IReader<IEnumerable<string>>, MockReader>();
+            services.AddTransient<IWriter<IEnumerable<string>>, MockWriter>();
+            services.AddTransient<IComparer<string>, NamesComparator>();
+            services.AddTransient<ISorter<IEnumerable<string>>, NamesSorter>();
+
+            serviceProvider = services.BuildServiceProvider();
         }
 
         [TestMethod]
@@ -87,7 +55,7 @@ namespace GlobalxCodingAssesmentTests
             var sortedList = _namesSorter.Sort();
 
             // assert that output of sort is equal to expected output
-            CollectionAssert.AreEqual(new List<string>(_reader.GetExpectedResult()), new List<string>(sortedList));
+            CollectionAssert.AreEqual(new List<string>(ExpectedSortedList.sortedList), new List<string>(sortedList));
         }
 
         [TestMethod]
@@ -101,7 +69,7 @@ namespace GlobalxCodingAssesmentTests
             _namesSorter.Write();
 
             // check that expected result and contents in writer are the same
-            CollectionAssert.AreEqual(new List<string>(_reader.GetExpectedResult()), new List<string>(_writer.writtenList));
+            CollectionAssert.AreEqual(new List<string>(ExpectedSortedList.sortedList), new List<string>(MockWriterResult.result));
         }
     }
 }
