@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace GlobalxCodingAssesmentTests
 {
+    // test the functionality of the NamesSorter class
     [TestClass]
     public class NamesSorterTests
     {
@@ -15,6 +16,7 @@ namespace GlobalxCodingAssesmentTests
         ISorter<IEnumerable<string>> _namesSorter;
         public NamesSorterTests()
         {
+            // do dependency injection
             ConfigureServices();
             // get instances of mock classes needed as dependencies
             _reader = serviceProvider.GetService<IReader<IEnumerable<string>>>();
@@ -27,6 +29,7 @@ namespace GlobalxCodingAssesmentTests
 
         }
 
+        // build a collection of services for automatic DI
         public void ConfigureServices()
         {
             ServiceCollection services = new ServiceCollection();
